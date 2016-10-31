@@ -1,0 +1,34 @@
+public class MyForm : Form
+    {
+        private readonly Label label;
+
+        public MyForm()
+        {
+            label = new Label { Size = new Size(ClientSize.Width, 30) };
+            var button = new Button
+            {
+                Location = new Point(0, label.Bottom),
+                Size = new Size(label.Width, label.Height),
+                Text = "Start"
+            };
+            Controls.Add(label);
+            Controls.Add(button);
+            button.Click += MakeWork;
+        }
+
+        private void MakeWorkInThread()
+        {
+            Thread.Sleep(3000);
+            BeginInvoke(new Action(() => label.Text = "Done"));
+        }
+
+        private void MakeWork(object sender, EventArgs args)
+        {
+            new Action(MakeWorkInThread).BeginInvoke(null, null);
+        }
+
+        public static void Main()
+        {
+            Application.Run(new MyForm());
+        }
+    }
