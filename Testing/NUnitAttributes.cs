@@ -25,12 +25,13 @@ namespace TestsForTest
         [Test, Combinatorial]
         public void CombinatorialTest([Values(1, 2, 3)] int x, [Values("a", "b")] string s)
         {
-            //MyTest(1, "A")
-            //MyTest(1, "B")
-            //MyTest(2, "A")
-            //MyTest(2, "B")
-            //MyTest(3, "A")
-            //MyTest(3, "B")
+            //equals to
+            //CombinatorialTest(1, "A")
+            //CombinatorialTest(1, "B")
+            //CombinatorialTest(2, "A")
+            //CombinatorialTest(2, "B")
+            //CombinatorialTest(3, "A")
+            //CombinatorialTest(3, "B")
         }
 
         /*The Description attribute is used to apply descriptive text to a Test, TestFixture or Assembly. The text appears in the XML output file and is shown in the Test Properties dialog.*/
@@ -62,7 +63,7 @@ namespace TestsForTest
         public void TimedTest()
         { }
 
-        /*Will bw run in order A,B,C*/
+        /*Will be run in order A,B,C*/
         [Test, Order(1)]
         public void TestA() { }
         [Test, Order(2)]
